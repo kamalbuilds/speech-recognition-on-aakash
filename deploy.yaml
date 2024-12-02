@@ -1,0 +1,49 @@
+---
+version: "2.0"
+services:
+  openai-whisper:
+    image: legendarykamal/whisper-akash:latest
+    expose:
+      - port: 7860
+        as: 80
+        to:
+          - global: true
+    env:
+      - GRADIO_SERVER_NAME=0.0.0.0
+      - GRADIO_SERVER_PORT=7860
+    params:
+      storage:
+        data:
+          mount: /mnt/data
+          readOnly: false
+profiles:
+  compute:
+    openai-whisper:
+      resources:
+        cpu:
+          units: 4
+        memory:
+          size: 16Gi
+        storage:
+          - size: 20Gi
+          - name: data
+            size: 10Gi
+            attributes:
+              persistent: true
+              class: beta2
+        gpu:
+          units: 1
+          attributes:
+            vendor:
+              nvidia: 
+  placement:
+    whisper akash:
+      pricing:
+        openai-whisper:
+          denom: uakt
+          amount: 10000
+deployment:
+  openai-whisper:
+    whisper akash:
+      profile: openai-whisper
+      count: 1
