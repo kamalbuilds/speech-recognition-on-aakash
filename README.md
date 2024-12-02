@@ -11,6 +11,8 @@ This project deploys OpenAI's Whisper speech recognition model on Akash Network 
 - File upload support
 - Scalable deployment on Akash Network
 
+## Demo Video 
+
 ## Deployment Instructions
 
 1. Build and push the Docker image:
