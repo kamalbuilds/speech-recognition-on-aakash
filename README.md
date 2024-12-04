@@ -2,6 +2,8 @@
 
 This project deploys OpenAI's Whisper speech recognition model on Akash Network with a user-friendly Gradio interface.
 
+ This enables users to transcribe speech using OpenAI's Whisper model in a scalable, GPU-accelerated environment
+
 ## Features
 
 - Speech recognition for multiple languages
